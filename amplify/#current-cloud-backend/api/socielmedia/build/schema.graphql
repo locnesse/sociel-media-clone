@@ -1,0 +1,224 @@
+type User {
+  id: ID!
+  username: String!
+  name: String!
+  email: String!
+  image: String
+  Ipsets(filter: ModelIpsetFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelIpsetConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Ipset {
+  id: ID!
+  content: String!
+  image: String
+  userID: ID!
+  user: User
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserConnection {
+  items: [User]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelUserFilterInput {
+  id: ModelIDInput
+  username: ModelStringInput
+  name: ModelStringInput
+  email: ModelStringInput
+  image: ModelStringInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+  getIpset(id: ID!): Ipset
+  listIpsets(filter: ModelIpsetFilterInput, limit: Int, nextToken: String): ModelIpsetConnection
+}
+
+input CreateUserInput {
+  id: ID
+  username: String!
+  name: String!
+  email: String!
+  image: String
+}
+
+input UpdateUserInput {
+  id: ID!
+  username: String
+  name: String
+  email: String
+  image: String
+}
+
+input DeleteUserInput {
+  id: ID
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
+  createIpset(input: CreateIpsetInput!, condition: ModelIpsetConditionInput): Ipset
+  updateIpset(input: UpdateIpsetInput!, condition: ModelIpsetConditionInput): Ipset
+  deleteIpset(input: DeleteIpsetInput!, condition: ModelIpsetConditionInput): Ipset
+}
+
+input ModelUserConditionInput {
+  username: ModelStringInput
+  name: ModelStringInput
+  email: ModelStringInput
+  image: ModelStringInput
+  and: [ModelUserConditionInput]
+  or: [ModelUserConditionInput]
+  not: ModelUserConditionInput
+}
+
+type Subscription {
+  onCreateUser: User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser: User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser: User @aws_subscribe(mutations: ["deleteUser"])
+  onCreateIpset: Ipset @aws_subscribe(mutations: ["createIpset"])
+  onUpdateIpset: Ipset @aws_subscribe(mutations: ["updateIpset"])
+  onDeleteIpset: Ipset @aws_subscribe(mutations: ["deleteIpset"])
+}
+
+type ModelIpsetConnection {
+  items: [Ipset]
+  nextToken: String
+}
+
+input ModelIpsetFilterInput {
+  id: ModelIDInput
+  content: ModelStringInput
+  image: ModelStringInput
+  userID: ModelIDInput
+  and: [ModelIpsetFilterInput]
+  or: [ModelIpsetFilterInput]
+  not: ModelIpsetFilterInput
+}
+
+input CreateIpsetInput {
+  id: ID
+  content: String!
+  image: String
+  userID: ID!
+}
+
+input UpdateIpsetInput {
+  id: ID!
+  content: String
+  image: String
+  userID: ID
+}
+
+input DeleteIpsetInput {
+  id: ID
+}
+
+input ModelIpsetConditionInput {
+  content: ModelStringInput
+  image: ModelStringInput
+  userID: ModelIDInput
+  and: [ModelIpsetConditionInput]
+  or: [ModelIpsetConditionInput]
+  not: ModelIpsetConditionInput
+}

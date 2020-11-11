@@ -1,0 +1,8 @@
+{
+    "CreateAPIKey": 1,
+    "AppSyncApiName": "socielmedia",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-socielmedia-dev-153532-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/457a4d19c23339435bb6550a3deb6127f527001c"
+}

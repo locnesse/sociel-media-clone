@@ -1,0 +1,65 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-socielmedia-dev-153532-authRole",
+      "UnauthRoleArn": "arn:aws:iam::430136449235:role/amplify-socielmedia-dev-153532-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::430136449235:role/amplify-socielmedia-dev-153532-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-socielmedia-dev-153532-deployment",
+      "UnauthRoleName": "amplify-socielmedia-dev-153532-unauthRole",
+      "StackName": "amplify-socielmedia-dev-153532",
+      "StackId": "arn:aws:cloudformation:us-east-2:430136449235:stack/amplify-socielmedia-dev-153532/815111a0-1c4f-11eb-bbba-0296ed261c1a",
+      "AmplifyAppId": "d1a8fpz70bs1n6"
+    }
+  },
+  "auth": {
+    "socielmedia356ba64b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-socielmedia-dev-153532-deployment/amplify-cfn-templates/auth/socielmedia356ba64b-cloudformation-template.yml",
+        "logicalId": "authsocielmedia356ba64b"
+      },
+      "lastPushTimeStamp": "2020-11-02T11:31:58.363Z",
+      "output": {
+        "AppClientSecret": "7pt5j6kf8vdik1li5j7e27ot4p8lgnkdd7u2hc3994qdqeqsr5s",
+        "UserPoolId": "us-east-2_uSmr3FXSQ",
+        "AppClientIDWeb": "3mue5m4i8ei0b6q0nmpei65al",
+        "AppClientID": "2esr3qndhvo3h12pfqmcv3osgk",
+        "IdentityPoolId": "us-east-2:d2a5320c-4b49-4609-aab1-72c3ad634b74",
+        "IdentityPoolName": "socielmedia356ba64b_identitypool_356ba64b__dev",
+        "UserPoolName": "socielmedia356ba64b_userpool_356ba64b"
+      },
+      "lastPushDirHash": "nT8TzE1UpjnQKpkr6nK+nvV1Bho="
+    }
+  },
+  "api": {
+    "socielmedia": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 60,
+              "description": "better Ipset"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "t664rx66fnacnj52fwjrtwsiye",
+        "GraphQLAPIEndpointOutput": "https://7abhvwq4krcjxoyhvnpqocfpre.appsync-api.us-east-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-h3jfs6qhpfafpd2zt5zk3qwkqe"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-socielmedia-dev-153532-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apisocielmedia"
+      },
+      "lastPushTimeStamp": "2020-11-02T11:32:05.784Z",
+      "lastPushDirHash": "odmclWTzSgnYU3wKYvjEkxpkRcY="
+    }
+  }
+}
